@@ -1,11 +1,11 @@
 use std::f64::consts::{PI};
 #[derive(Debug)]
 struct Rectangle {
-    width: u32,
-    height: u32,
+    width: f64,
+    height: f64,
 }
 impl Rectangle {
-    fn area(&self) -> u32 {
+    fn area(&self) -> f64 {
         self.width * self.height
     }
 }
@@ -16,20 +16,35 @@ struct Circle {
 }
 impl Circle {
     fn area(&self) -> f64 {
-        2.0 * PI * self.radius
+        PI * self.radius.powi(2)
+    }
+}
+
+#[derive(Debug)]
+struct Triangle {
+    base: f64,
+    height: f64,
+}
+impl Triangle {
+    fn area(&self) -> f64 {
+        (self.base * self.height) / 2.0
     }
 }
 
 
-
 fn main() {
     let rect1 = Rectangle {
-        width: 30,
-        height: 50
+        width: 30.0,
+        height: 50.0
     };
 
     let circ1 = Circle {
         radius: 10.0
+    };
+
+    let trng1 = Triangle {
+        base: 5.0,
+        height: 4.0
     };
 
     println!(
@@ -41,4 +56,9 @@ fn main() {
         "The area of the circle is {} square units.",
         circ1.area()
     );
+
+    println!(
+        "The area of the triangle is {} square units.",
+        trng1.area()
+    )
 }
